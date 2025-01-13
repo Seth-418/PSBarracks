@@ -438,11 +438,12 @@ function about(){
     $aboutForm = New-Object System.Windows.Forms.Form
     $aboutForm.Text = "About"
     $aboutForm.width = 600
-    $aboutForm.Height = 200
+    $aboutForm.Height = 225
     $aboutForm.FormBorderStyle='FixedDialog'
+    $aboutForm.MaximizeBox=$false
 
     $logoPictureBox = New-Object System.Windows.Forms.PictureBox
-    $logoPictureBox.location = "25,-25"
+    $logoPictureBox.location = "20,0"
     $logoPictureBox.Size ="180,180"
     $logoPictureBox.SizeMode = [System.Windows.Forms.PictureBoxSizeMode]::Zoom
     $logoPictureBox.Image = [System.Drawing.Image]::FromFile($logoPath)
@@ -451,7 +452,7 @@ function about(){
     $aboutGroupBox.Text = "About"
     $aboutGroupBox.Width = 345
     $aboutGroupBox.Height = 145
-    $aboutGroupBox.Location = "230,5"
+    $aboutGroupBox.Location = "220,25"
     $aboutGroupBox.Font = [system.drawing.font]'$editDescriptionLabel.Font.Name$editDescriptionLabel.Font.Size, style=Bold'
 
     $aboutLabel = New-Object System.Windows.Forms.label
