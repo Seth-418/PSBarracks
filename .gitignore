@@ -1,0 +1,3 @@
+#ignore all .ps1 files in script folder for commits. 
+scripts/*.ps1
+Scripts/Descriptions/*.txt
