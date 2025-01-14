@@ -1,5 +1,6 @@
 {
     "FolderLocation":  "C:\\PSBarracks\\Scripts",
     "confirmation":  true,
-    "runas":  false
+    "runas":  false,
+    "confirmSound":  true
 }

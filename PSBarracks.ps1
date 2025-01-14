@@ -124,6 +124,10 @@ $selectedScriptPath = $scripts[$scriptview.SelectedIndex]
 
         $confirmationForm.Controls.Add($runCancelButton)
         
+            if($configContent.confirmSound -eq $true){
+                [System.Media.SystemSounds]::Exclamation.Play()
+            }
+
         $confirmationForm.ShowDialog()
     }
     if ($configContent.confirmation -eq $false){
@@ -308,7 +312,7 @@ function settingsMenu(){
     $toggleSettingsGroupBox = New-Object System.Windows.Forms.GroupBox
     $toggleSettingsGroupBox.Text = "Script Run Settings"
     $toggleSettingsGroupBox.width = 375
-    $toggleSettingsGroupBox.Height = 80
+    $toggleSettingsGroupBox.Height = 90
     $toggleSettingsGroupBox.Location = "5,115"
 
     $confirmRunCheckBox = New-Object System.Windows.Forms.CheckBox
@@ -318,11 +322,18 @@ function settingsMenu(){
     $confirmRunCheckBox.Add_Click({confirmToggle})
     $confirmRunCheckBox.Checked = $configContent.confirmation
 
+    $soundCheckBox = New-Object System.Windows.Forms.CheckBox
+    $soundCheckBox.Text = "Enable Confirmation Sound"
+    $soundCheckBox.AutoSize = $true
+    $soundCheckBox.Location = "35,40"
+    $soundCheckBox.Add_Click({soundToggle})
+    $soundCheckBox.Checked = $configContent.confirmSound
+    $soundCheckBox.Enabled = $configContent.confirmation
+
     $runAsCheckBox = New-Object System.Windows.Forms.CheckBox
     $runAsCheckBox.Text = "Run As Another User"
     $runAsCheckBox.AutoSize = $true
-    $runAsCheckBox.Location = "5,45"
-    $runAsCheckBox.Checked = 
+    $runAsCheckBox.Location = "5,60"
     $runAsCheckBox.Add_Click({runAsToggle})
     $runAsCheckBox.Checked = $configContent.runas
 
@@ -345,6 +356,7 @@ function settingsMenu(){
 
     $toggleSettingsGroupBox.Controls.Add($confirmRunCheckBox)
     $toggleSettingsGroupBox.Controls.Add($runAsCheckBox)
+    $toggleSettingsGroupBox.Controls.Add($soundCheckBox)
 
     $settings_form.Controls.Add($toggleSettingsGroupBox)
     $settings_form.Controls.Add($folderSettingsGroupBox)
@@ -361,9 +373,17 @@ function runAsToggle(){
 
 function confirmToggle(){
     $newConfirmationContent = $ConfirmRunCheckbox.Checked
+    $soundCheckBox.Enabled = $newConfirmationContent
     $configContent.confirmation = $newConfirmationContent
     $newConfirmationContent = $configContent | ConvertTo-Json -Depth 3
     Set-Content -Path $configFilePath -Value $newConfirmationContent
+}
+
+function soundToggle(){
+    $newSoundContent = $soundCheckbox.Checked
+    $configContent.confirmSound = $newSoundContent
+    $newSoundContent = $configContent | ConvertTo-Json -Depth 4
+    Set-Content -Path $configFilePath -Value $newSoundContent
 }
 
 function listClick(){
