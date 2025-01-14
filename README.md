@@ -17,3 +17,5 @@ Additional options under the settings menu that can be enabled or disabled inclu
     -Run script as another user, with credentials entered at time of script launch.  
     -Prompt a confirmation message prior to script running.  
 
+### GUI Showcase
+View GUI in the following Imgur Album: https://imgur.com/a/WraeYPg
