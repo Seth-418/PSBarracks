@@ -457,7 +457,7 @@ function about(){
 
     $aboutLabel = New-Object System.Windows.Forms.label
     $aboutLabel.Font = New-Object System.Drawing.Font("Segoe UI Empoji",8)
-    $aboutLabel.Text = "PSBarracks is a simple script that provides a GUI interface to view/organize your PS1 Scripts."
+    $aboutLabel.Text = "PSBarracks is a simple GUI that provides an easy way to launch and organize your PS1 Scripts."
     $aboutlabel.AutoSize = $false
     $aboutLabel.size = "315, 40"
     $aboutLabel.Location = "15,30"
