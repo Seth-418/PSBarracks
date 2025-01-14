@@ -1,5 +1,5 @@
 {
     "FolderLocation":  "C:\\PSBarracks\\Scripts",
     "confirmation":  true,
-    "runas":  true
+    "runas":  false
 }
