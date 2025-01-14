@@ -5,6 +5,8 @@ $main_form = New-Object System.Windows.Forms.Form
 
 $configFilePath = "C:\PSBarracks\config.json"
 
+$icon = New-Object System.Drawing.Icon("C:\PSBarracks\psbarracks.ico")
+
 $configContent = Get-Content -path $configFilePath -Raw  | ConvertFrom-Json
 
 $folderLocation = $configContent.folderLocation
@@ -39,6 +41,7 @@ $descPanel.Height = 125
 $descPanel.Location = "15,285"
 $descPanel.text = "Description"
 $main_form.Controls.Add($descPanel)
+$main_form.Icon = $icon
 
 $runButton = New-Object System.Windows.Forms.Button
 $RunButton.text = "Run"
