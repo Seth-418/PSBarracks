@@ -1,10 +1,6 @@
 Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.Application]::EnableVisualStyles()
 
-#utf8 encoding for emoji support
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-
-
 $main_form = New-Object System.Windows.Forms.Form
 
 $configFilePath = "C:\PSBarracks\config.json"
